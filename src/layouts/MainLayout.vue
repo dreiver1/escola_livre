@@ -6,7 +6,7 @@
           flat
           dense
           round
-          icon="menu"
+          icon="☰"
           aria-label="Menu"
           @click="toggleLeftDrawer"
         />
@@ -28,7 +28,7 @@
         <q-item-label
           header
         >
-          Essential Links
+          Configurações
         </q-item-label>
 
         <EssentialLink
@@ -53,8 +53,8 @@ const linksList = [
   {
     title: 'Home',
     caption: '',
-    icon: 'home',
-    route: { name: 'home' }
+    icon: '',
+    route: { name: 'Home' }
   }
 ]
 

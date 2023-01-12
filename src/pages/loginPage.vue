@@ -1,13 +1,17 @@
 <template>
-  <q-page class="flex flex-center">
-    <p class="H1">Login</p>
+  <q-page padding>
+    <login-form />
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
+import loginForm from 'src/components/loginForm.vue'
 
 export default defineComponent({
-  name: 'loginPage'
+  name: 'loginPage',
+  components: {
+    loginForm
+  }
 })
 </script>

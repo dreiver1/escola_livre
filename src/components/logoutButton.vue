@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <q-btn-dropdown color="secundary" label="" icon="menu">
+    <q-btn-dropdown color="secundary" icon="person">
       <q-list>
         <q-item clickable v-close-popup @click="handleLogout">
           <q-item-section>

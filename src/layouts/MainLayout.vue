@@ -2,20 +2,19 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <!-- <q-btn
+        <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
-        /> -->
+        />
 
         <q-toolbar-title>
-          Quasar App
+          School Management
         </q-toolbar-title>
 
-        <div><logout-button/></div>
       </q-toolbar>
     </q-header>
 
@@ -48,14 +47,37 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
-import logoutButton from 'components/logoutButton.vue'
 
 const linksList = [
   {
+    title: 'Turmas',
+    caption: 'Sair do aplicativo',
+    icon: 'class',
+    link: 'me'
+  },
+  {
+    title: 'Atividades',
+    caption: 'Sair do aplicativo',
+    icon: 'assignment',
+    link: 'me'
+  },
+  {
+    title: 'Alunos',
+    caption: 'Sair do aplicativo',
+    icon: 'perm_identity',
+    link: 'me'
+  },
+  {
+    title: 'Configurações',
+    caption: 'Sair do aplicativo',
+    icon: 'manage_accounts',
+    link: 'me'
+  },
+  {
     title: 'Logout',
-    caption: '',
+    caption: 'Sair do aplicativo',
     icon: 'logout',
-    link: process.env.VUE_ROUTER_BASE
+    link: 'loginPage'
   }
 ]
 
@@ -63,8 +85,7 @@ export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink,
-    logoutButton
+    EssentialLink
   },
 
   setup () {

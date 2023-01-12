@@ -1,14 +1,17 @@
 <template>
     <div class="col-md-4 col-sm-6 col-xs-10 q-gutter-y-md">
+    <div class="text-h6 row arraund-start">
+        Noticias
+    </div>
       <q-carousel
         v-model="slide"
         swipeable
         animated
-        control-color="purple"
+        control-color="blue"
         navigation
         padding
-        height="300px"
-        class="text-purple rounded-borders"
+        height="250px"
+        class="text-black rounded-borders"
         widht="max-content"
       >
         <q-carousel-slide name="style" class="column no-wrap flex-center">

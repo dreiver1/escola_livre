@@ -1,5 +1,5 @@
 <template>
-  <q-item clickable v-ripple @click="handleTurmas({uuid})">
+  <q-item clickable v-ripple @click="handleTurmas({uuid})" style="padding: 10px; border: 1px solid black;">
     <q-item-section  v-if="icon"
     avatar>
       <q-icon :name="icon" />
@@ -13,6 +13,7 @@
 </template>
 <script>
 import { defineComponent } from 'vue'
+import { useRoute } from 'vue-router'
 
 export default defineComponent({
   name: 'listaTurmas',
@@ -38,9 +39,11 @@ export default defineComponent({
     }
   },
   setup () {
+    const router = useRoute()
     const handleTurmas = (uuid) => {
       try {
         console.log(uuid.uuid)
+        router.push({})
       } catch (error) {
         console.log('ocorreu um erro :' + error)
       }

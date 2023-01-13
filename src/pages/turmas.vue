@@ -1,11 +1,12 @@
 <template>
   <q-page class="row-reverse justify-center">
-    <div class="text-h4 flex flex-center" >TURMAS</div>
+    <div class="text-h4 flex flex-center" style="padding: 10px;" >TURMAS</div>
     <div>
       <listaTurmas
       v-for="turma in turmaslist"
       :key="turma.uuid"
-      v-bind="turma"/>
+      v-bind="turma"
+      style="padding: 10px; border: 1px solid black;"/>
     </div>
   </q-page>
 </template>

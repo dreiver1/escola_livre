@@ -7,7 +7,7 @@
       <q-icon :name="icon" />
     </q-item-section>
 
-    <q-item-section clickable @click="goTopage({ link })" class="pointer">
+    <q-item-section clickable @click="goTopage({ link })" style="cursor: pointer;">
       <q-item-label>{{ title }}</q-item-label>
       <!-- <q-item-label caption>{{ caption }}</q-item-label> -->
     </q-item-section>

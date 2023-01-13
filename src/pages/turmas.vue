@@ -12,38 +12,32 @@
 </template>
 
 <script>
-
-import { defineComponent } from 'vue'
+import { api } from 'src/boot/axios.js'
+import { defineComponent, onMounted, ref } from 'vue'
 import listaTurmas from 'src/components/listaTurmas.vue'
+const turmasLista = ref([])
+const getTurmas = async () => {
+  try {
+    const { data } = await api.get('http://localhost:3002/turmas')
+    turmasLista.value = data
+    console.log(data)
+  } catch (error) {
+    console.log('ocorreu um erro: ' + error)
+  }
+}
 export default defineComponent({
   name: 'turmasPage',
   components: {
     listaTurmas
   },
+  setup () {
+    onMounted(() => {
+      getTurmas()
+    })
+  },
   data () {
     return {
-      turmaslist: [
-        {
-          title: 'Português 01',
-          disciplina: 'Português',
-          uuid: '9795456'
-        },
-        {
-          title: 'Português 02',
-          disciplina: 'Português',
-          uuid: '54465456'
-        },
-        {
-          title: 'Português 03',
-          disciplina: 'Português',
-          uuid: '7971235'
-        },
-        {
-          title: 'Português 04',
-          disciplina: 'Português',
-          uuid: '3214569'
-        }
-      ]
+      turmaslist: turmasLista
     }
   }
 })

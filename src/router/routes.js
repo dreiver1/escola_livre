@@ -11,7 +11,8 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: 'me', name: 'me', component: () => import('pages/IndexPage.vue') }
+      { path: 'me', name: 'me', component: () => import('pages/IndexPage.vue') },
+      { path: 'turmas', name: 'turmasPage', component: () => import('pages/turmas.vue') }
     ]
   },
 

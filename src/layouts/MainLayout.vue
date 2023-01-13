@@ -53,7 +53,7 @@ const linksList = [
     title: 'Turmas',
     caption: 'Sair do aplicativo',
     icon: 'class',
-    link: 'me'
+    link: 'turmasPage'
   },
   {
     title: 'Atividades',

@@ -4,7 +4,7 @@
     <div>
       <listaTurmas
       v-for="turma in turmaslist"
-      :key="turma.uuid"
+      :key="turma.id"
       v-bind="turma"
       style="padding: 10px; border: 1px solid black;"/>
     </div>

@@ -5,9 +5,9 @@
       <q-icon :name="icon" />
     </q-item-section>
     <q-item-section>
-      <q-item-label>Nome: {{ title }}</q-item-label>
-      <q-item-label>Materia: {{ disciplina }}</q-item-label>
-      <q-item-label>ID: {{ uuid }}</q-item-label>
+      <q-item-label>Nome: {{ nome }}</q-item-label>
+      <q-item-label>Materia: {{ nome }}</q-item-label>
+      <q-item-label>ID: {{ id }}</q-item-label>
     </q-item-section>
   </q-item>
 </template>
@@ -18,17 +18,17 @@ import { useRouter } from 'vue-router'
 export default defineComponent({
   name: 'listaTurmas',
   props: {
-    title: {
+    nome: {
       type: String,
       required: false
     },
 
-    disciplina: {
+    email: {
       type: String,
       default: 'disciplina'
     },
 
-    uuid: {
+    id: {
       type: String,
       required: true
     },

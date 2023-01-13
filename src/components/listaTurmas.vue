@@ -13,7 +13,7 @@
 </template>
 <script>
 import { defineComponent } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'listaTurmas',
@@ -39,11 +39,10 @@ export default defineComponent({
     }
   },
   setup () {
-    const router = useRoute()
+    const router = useRouter()
     const handleTurmas = (uuid) => {
       try {
-        console.log(uuid.uuid)
-        router.push({})
+        router.push({ name: 'turmaPage', params: { Id: uuid.uuid } })
       } catch (error) {
         console.log('ocorreu um erro :' + error)
       }

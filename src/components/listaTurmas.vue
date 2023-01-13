@@ -1,5 +1,5 @@
 <template>
-  <q-item clickable v-ripple>
+  <q-item clickable v-ripple @click="handleTurmas({uuid})">
     <q-item-section  v-if="icon"
     avatar>
       <q-icon :name="icon" />
@@ -35,6 +35,18 @@ export default defineComponent({
     icon: {
       type: String,
       default: 'content_paste_search'
+    }
+  },
+  setup () {
+    const handleTurmas = (uuid) => {
+      try {
+        console.log(uuid.uuid)
+      } catch (error) {
+        console.log('ocorreu um erro :' + error)
+      }
+    }
+    return {
+      handleTurmas
     }
   }
 })

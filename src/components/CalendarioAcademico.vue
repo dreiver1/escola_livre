@@ -1,6 +1,8 @@
 <template>
-  
   <div class="col-md-4 col-sm-6 col-xs-10 q-gutter-y-md">
+    <div class="text-h6 row justify-start">
+      Calendario
+    </div>
     <q-carousel
       v-model="slide"
       swipeable
@@ -8,7 +10,7 @@
       control-color="blue"
       navigation
       padding
-      height="300px"
+      height="250px"
       class="text-blue rounded-borders"
       widht="max-content"
     >
@@ -44,7 +46,7 @@
 import { ref } from 'vue'
 
 export default {
-  name: 'NoticiasCarrousel',
+  name: 'CalendarioAcademico',
   setup () {
     return {
       slide: ref('style'),

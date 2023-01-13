@@ -12,7 +12,7 @@
         <q-tab name="videos" icon="slow_motion_video" label="Videos" />
         <q-tab name="addressbook" icon="people" label="Address Book" />
       </q-tabs>
-      <TurmaTable />
+      <TurmaTable :idTurma="this.$route.params.Id"/>
     </q-page>
   </template>
 <script>
@@ -23,8 +23,9 @@ export default defineComponent({
   components: {
     TurmaTable
   },
-  data () {
-    return {}
+  setup () {
+    return {
+    }
   }
 })
 </script>

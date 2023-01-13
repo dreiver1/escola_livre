@@ -8,9 +8,10 @@
         row-key="name"
       />
     </div>
+    {{ idTurma }}
   </template>
 <script>
-import { defineComponent, onMounted, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { api } from 'src/boot/axios'
 const columns = [
   { name: 'nome', field: 'nome', label: 'Nome', sortable: true },
@@ -18,27 +19,37 @@ const columns = [
   { name: 'email', field: 'email', label: 'Email', sortable: true }
 ]
 const alunos = ref([])
-
-const getAlunos = async () => {
+const getAlunos = async (id) => {
   try {
-    const { data } = await api.get('http://localhost:3002/alunos/turma/clc3gi38n0002uls05tirw9ap')
+    const request = 'http://localhost:3002/alunos/turma/' + id
+    const { data } = await api.get(request)
     alunos.value = data
     return console.log(data)
   } catch (error) {
     console.log('ocorreu um erro: ' + error)
   }
 }
-
 export default defineComponent({
   name: 'TurmaTable',
+  props: {
+    idTurma: {
+      type: String
+    }
+  },
   setup () {
-    onMounted(() => {
-      getAlunos()
-    })
     return {
       columns,
       alunos
     }
+  },
+  data () {
+    return {
+      ID: this.idTurma
+    }
+  },
+  created () {
+    console.log(this.idTurma)
+    getAlunos(this.idTurma)
   }
 })
 </script>

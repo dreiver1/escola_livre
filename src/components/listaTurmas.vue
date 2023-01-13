@@ -1,5 +1,5 @@
 <template>
-  <q-item clickable v-ripple @click="handleTurmas({uuid})" style="padding: 10px; border: 1px solid black;">
+  <q-item clickable v-ripple @click="handleTurmas({ id })" style="padding: 10px; border: 1px solid black;">
     <q-item-section  v-if="icon"
     avatar>
       <q-icon :name="icon" />
@@ -40,9 +40,9 @@ export default defineComponent({
   },
   setup () {
     const router = useRouter()
-    const handleTurmas = (uuid) => {
+    const handleTurmas = (id) => {
       try {
-        router.push({ name: 'turmaPage', params: { Id: uuid.uuid } })
+        router.push({ name: 'turmaPage', params: { Id: id.id } })
       } catch (error) {
         console.log('ocorreu um erro :' + error)
       }

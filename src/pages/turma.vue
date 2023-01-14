@@ -14,8 +14,9 @@
           <TurmaTable :idTurma="this.$route.params.Id"/>
         </q-tab-panel>
         <q-tab-panel name="frequency" >
-          <div class="text-h2 flex flex-center">Frequencia</div>
-          <formFrequencia />
+          <div class="row"  >
+            <formFrequencia :idTurma="this.$route.params.Id"/>
+          </div>
         </q-tab-panel>
         <q-tab-panel name="grades" >
           <div class="text-h2 flex flex-center">Notas</div>

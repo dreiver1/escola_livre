@@ -1,6 +1,8 @@
 <template>
     <div class="q-pa-md">
       <q-table
+        :rows-per-page-options="[0]"
+        hide-bottom
         title="Alunos"
         dense
         :rows="alunos"

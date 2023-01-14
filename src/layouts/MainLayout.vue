@@ -12,7 +12,8 @@
         />
 
         <q-toolbar-title>
-          School Management
+          <q-icon name="school" />
+          Management System
         </q-toolbar-title>
 
       </q-toolbar>

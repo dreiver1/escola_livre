@@ -3,21 +3,28 @@
       <q-tabs
         v-model="tab"
         inline-label
-        class="bg-primary text-white shadow-2"
+        class="text-indigo shadow-2"
       >
-        <q-tab name="mails" icon="mail" label="Mails" />
-        <q-tab name="alarms" icon="alarm" label="Alarms" />
-        <q-tab name="movies" icon="movie" label="Movies" />
-        <q-tab name="photos" icon="photo" label="Photos" />
-        <q-tab name="videos" icon="slow_motion_video" label="Videos" />
-        <q-tab name="addressbook" icon="people" label="Address Book" />
+        <q-tab name="students" icon="person" label="Alunos" />
+        <q-tab name="frequency" icon="format_list_numbered" label="frequencia" />
+        <q-tab name="grades" icon="tab" label="Notas" />
       </q-tabs>
-      <TurmaTable :idTurma="this.$route.params.Id"/>
+      <q-tab-panels v-model="tab">
+        <q-tab-panel name="students" >
+          <TurmaTable :idTurma="this.$route.params.Id"/>
+        </q-tab-panel>
+        <q-tab-panel name="frequency" >
+          <div class="text-h2 flex flex-center">Frequencia</div>
+        </q-tab-panel>
+        <q-tab-panel name="grades" >
+          <div class="text-h2 flex flex-center">Notas</div>
+        </q-tab-panel>
+      </q-tab-panels>
     </q-page>
   </template>
 <script>
 import TurmaTable from 'src/components/TurmaTable.vue'
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'turmaPage',
   components: {
@@ -25,6 +32,7 @@ export default defineComponent({
   },
   setup () {
     return {
+      tab: ref('students')
     }
   }
 })

@@ -8,7 +8,7 @@
         row-key="name"
       />
     </div>
-    {{ idTurma }}
+    {{ ID }}
   </template>
 <script>
 import { defineComponent, ref } from 'vue'

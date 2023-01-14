@@ -15,6 +15,7 @@
         </q-tab-panel>
         <q-tab-panel name="frequency" >
           <div class="text-h2 flex flex-center">Frequencia</div>
+          <formFrequencia />
         </q-tab-panel>
         <q-tab-panel name="grades" >
           <div class="text-h2 flex flex-center">Notas</div>
@@ -24,11 +25,13 @@
   </template>
 <script>
 import TurmaTable from 'src/components/TurmaTable.vue'
+import formFrequencia from 'src/components/formFrequencia.vue'
 import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'turmaPage',
   components: {
-    TurmaTable
+    TurmaTable,
+    formFrequencia
   },
   setup () {
     return {

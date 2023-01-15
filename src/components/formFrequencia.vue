@@ -1,7 +1,13 @@
 <template>
   <q-item>
     <div class="q-pa-md" >
-      <ListAlunos />
+      <ListAlunos
+        v-for="link in essentialLinks"
+        :key="link.title"
+        v-bind="link"
+        style="padding: 0px;"
+      />
+
     </div>
   </q-item>
 </template>
@@ -18,6 +24,38 @@ const handleFrequencia = async (idTurma) => {
     console.log('ocorreu um erro: ' + error)
   }
 }
+const linksList = [
+  {
+    title: 'Turmas',
+    caption: 'Sair do aplicativo',
+    icon: 'class',
+    link: 'turmasPage'
+  },
+  {
+    title: 'Atividades',
+    caption: 'Sair do aplicativo',
+    icon: 'assignment',
+    link: 'me'
+  },
+  {
+    title: 'Alunos',
+    caption: 'Sair do aplicativo',
+    icon: 'perm_identity',
+    link: 'me'
+  },
+  {
+    title: 'Configurações',
+    caption: 'Sair do aplicativo',
+    icon: 'manage_accounts',
+    link: 'me'
+  },
+  {
+    title: 'Logout',
+    caption: 'Sair do aplicativo',
+    icon: 'logout',
+    link: 'loginPage'
+  }
+]
 export default defineComponent({
   name: 'formFrequencia',
   props: {
@@ -29,7 +67,9 @@ export default defineComponent({
     handleFrequencia(this.idTurma)
   },
   setup () {
-    return {}
+    return {
+      essentialLinks: linksList
+    }
   },
   components: { ListAlunos }
 })

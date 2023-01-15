@@ -15,10 +15,12 @@ const routes = [
     ]
   },
   {
-    path: '/turma/:Id',
+    path: '/turma/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', name: 'turmaPage', component: () => import('pages/turma.vue') }
+      { path: 'id/:Id', name: 'turmaPage', component: () => import('pages/turma.vue') },
+      { path: 'alunos', name: 'turmaAlunos', component: () => import('pages/turma/turmaAlunos.vue') },
+      { path: 'frequencia', name: 'turmaFrequencia', component: () => import('pages/turma/turmaFrequencia.vue') }
     ],
     props: true
   },

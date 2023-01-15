@@ -6,7 +6,7 @@
       v-for="turma in turmaslist"
       :key="turma.id"
       v-bind="turma"
-      style="padding: 10px; border: 1px solid black;"/>
+      style="padding: 10px; border: 1px solid black; border-radius: 10px; margin: 5px;"/>
     </div>
   </q-page>
 </template>

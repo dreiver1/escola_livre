@@ -2,7 +2,9 @@
   <q-tabs
       v-model="tab"
       inline-label
-      class="text-indigo shadow-2"
+      class="text-white shadow-2 bg-blue"
+      active-color="indigo"
+      style="padding: 0px;"
     >
       <q-tab name="janeiro" label="Janeiro" />
       <q-tab name="fevereiro"  label="Fevereiro" />

@@ -2,12 +2,11 @@
   <q-item>
     <div class="q-pa-md" >
       <ListAlunos
-        v-for="link in essentialLinks"
-        :key="link.title"
-        v-bind="link"
+        v-for="aluno in AlunosList"
+        :key="aluno.alunosIdAluno"
+        v-bind="aluno"
         style="padding: 0px;"
       />
-
     </div>
   </q-item>
 </template>
@@ -24,36 +23,31 @@ const handleFrequencia = async (idTurma) => {
     console.log('ocorreu um erro: ' + error)
   }
 }
-const linksList = [
+const studentsList = [
   {
-    title: 'Turmas',
-    caption: 'Sair do aplicativo',
-    icon: 'class',
-    link: 'turmasPage'
+    alunosIdAluno: 'clc3gi38n0002uls05tirw9ap',
+    turmaId: 'clc3gi38n0002uls05tirw9ap',
+    id: 'clc3ke2zc0001ul38kp8aczk5'
   },
   {
-    title: 'Atividades',
-    caption: 'Sair do aplicativo',
-    icon: 'assignment',
-    link: 'me'
+    alunosIdAluno: 'clc3gi38n0002uls05tirw9ap',
+    turmaId: 'Sair do aplicativo',
+    id: 'clc3ke2zc0001ul38kp8aczk5'
   },
   {
-    title: 'Alunos',
-    caption: 'Sair do aplicativo',
-    icon: 'perm_identity',
-    link: 'me'
+    alunosIdAluno: 'clc3gi38n0002uls05tirw9ap',
+    turmaId: 'clc3ke2zc0001ul38kp8aczk5',
+    id: 'clc3ke2zc0001ul38kp8aczk5'
   },
   {
-    title: 'Configurações',
-    caption: 'Sair do aplicativo',
-    icon: 'manage_accounts',
-    link: 'me'
+    alunosIdAluno: 'clc3gi38n0002uls05tirw9ap',
+    turmaId: 'Sair do aplicativo',
+    id: 'clc3ke2zc0001ul38kp8aczk5'
   },
   {
-    title: 'Logout',
-    caption: 'Sair do aplicativo',
-    icon: 'logout',
-    link: 'loginPage'
+    alunosIdAluno: 'Logout',
+    turmaId: 'Sair do aplicativo',
+    id: 'clc3ke2zc0001ul38kp8aczk5'
   }
 ]
 export default defineComponent({
@@ -68,7 +62,7 @@ export default defineComponent({
   },
   setup () {
     return {
-      essentialLinks: linksList
+      AlunosList: studentsList
     }
   },
   components: { ListAlunos }

@@ -6,7 +6,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import frequencia from 'src/components/frequencia.vue'
+import frequencia from 'src/components/frequenciaList.vue'
 
 export default defineComponent({
   name: 'turmaFrequencia',

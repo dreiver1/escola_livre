@@ -28,7 +28,7 @@
   </template>
 <script>
 import TurmaTable from 'src/components/TurmaTable.vue'
-import frequencia from 'src/components/frequencia.vue'
+import frequencia from 'src/components/frequenciaList.vue'
 import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'turmaPage',

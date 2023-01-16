@@ -1,5 +1,5 @@
 <template>
-  <q-page class="row justify-center">
+  <q-page class="row justify-center" padding>
    <NoticiasCarrousel />
    <CalendarioAcademico />
   </q-page>

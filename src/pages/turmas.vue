@@ -12,15 +12,16 @@
 </template>
 
 <script>
-import { api } from 'src/boot/axios.js'
+import postsService from 'src/services/turmas'
 import { defineComponent, onMounted, ref } from 'vue'
 import listaTurmas from 'src/components/listaTurmas.vue'
+const { list } = postsService()
 const turmasLista = ref([])
 const getTurmas = async () => {
   try {
-    const { data } = await api.get('http://localhost:3002/turmas')
-    turmasLista.value = data
-    console.log(data)
+    const response = await list()
+    turmasLista.value = response
+    console.log(response)
   } catch (error) {
     console.log('ocorreu um erro: ' + error)
   }

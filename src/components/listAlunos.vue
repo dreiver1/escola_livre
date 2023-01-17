@@ -27,157 +27,157 @@
 import { defineComponent, ref } from 'vue'
 import { api } from 'src/boot/axios'
 
-let frequencia = [{ a01: true }]
+let frequencia = []
 
-const handldeOptions = (frequencia) => {
+const handldeOptions = (mes) => {
+  console.log(mes)
   const aux = [
     {
-      label: `${1}`,
-      value: frequencia[1].a01
+      label: '01',
+      value: mes[1].a02 + `${1}`
     },
     {
-      label: `${2}`,
-      value: frequencia[1].a02
+      label: '02',
+      value: mes[1].a02 + `${2}`
     },
     {
-      label: `${3}`,
-      value: frequencia[1].a03
+      label: '03',
+      value: mes[1].a03 + `${3}`
     },
     {
-      label: `${4}`,
-      value: frequencia[1].a04
+      label: '04',
+      value: mes[1].a04 + `${4}`
     },
     {
-      label: `${5}`,
-      value: frequencia[1].a05
+      label: '05',
+      value: mes[1].a05 + `${5}`
     },
     {
-      label: `${6}`,
-      value: frequencia[1].a06
+      label: '06',
+      value: mes[1].a06 + `${6}`
     },
     {
-      label: `${7}`,
-      value: frequencia[1].a07
+      label: '07',
+      value: mes[1].a07 + `${7}`
     },
     {
-      label: `${8}`,
-      value: frequencia[1].a08
+      label: '08',
+      value: mes[1].a08 + `${8}`
     },
     {
-      label: `${9}`,
-      value: frequencia[1].a09
+      label: '09',
+      value: mes[1].a09 + `${9}`
     },
     {
       label: `${10}`,
-      value: frequencia[1].a10
+      value: mes[1].a10 + `${10}`
     },
     {
       label: `${11}`,
-      value: frequencia[1].a11
+      value: mes[1].a11 + `${11}`
     },
     {
       label: `${12}`,
-      value: frequencia[1].a12
+      value: mes[1].a12 + `${12}`
     },
     {
       label: `${13}`,
-      value: frequencia[1].a13
+      value: mes[1].a13 + `${13}`
     },
     {
       label: `${14}`,
-      value: frequencia[1].a14
+      value: mes[1].a14 + `${14}`
     },
     {
       label: `${15}`,
-      value: frequencia[1].a15
+      value: mes[1].a15 + `${15}`
     },
     {
       label: `${16}`,
-      value: frequencia[1].a16
+      value: mes[1].a16 + `${16}`
     },
     {
       label: `${17}`,
-      value: frequencia[1].a17
+      value: mes[1].a17 + `${17}`
     },
     {
       label: `${18}`,
-      value: frequencia[1].a18
+      value: mes[1].a18 + `${18}`
     },
     {
       label: `${19}`,
-      value: frequencia[1].a19
+      value: mes[1].a19 + `${19}`
     },
     {
       label: `${20}`,
-      value: frequencia[1].a20
+      value: mes[1].a20 + `${20}`
     },
     {
       label: `${21}`,
-      value: frequencia[1].a21
+      value: mes[1].a21 + `${21}`
     },
     {
       label: `${22}`,
-      value: frequencia[1].a22
+      value: mes[1].a22 + `${22}`
     },
     {
       label: `${23}`,
-      value: frequencia[1].a23
+      value: mes[1].a23 + `${23}`
     },
     {
       label: `${24}`,
-      value: frequencia[1].a24
+      value: mes[1].a24 + `${24}`
     },
     {
       label: `${25}`,
-      value: frequencia[1].a25
+      value: mes[1].a25 + `${25}`
     },
     {
       label: `${26}`,
-      value: frequencia[1].a26
+      value: mes[1].a26 + `${26}`
     },
     {
       label: `${27}`,
-      value: frequencia[1].a27
+      value: mes[1].a27 + `${27}`
     },
     {
       label: `${28}`,
-      value: frequencia[1].a28
+      value: mes[1].a28 + `${28}`
     },
     {
       label: `${29}`,
-      value: frequencia[1].a29
+      value: mes[1].a29 + `${29}`
     },
     {
       label: `${30}`,
-      value: frequencia[1].a30
+      value: mes[1].a30 + `${30}`
     },
     {
       label: `${31}`,
-      value: frequencia[1].a31
+      value: mes[1].a31 + `${31}`
     }
   ]
   options = aux
-  console.log(frequencia[1].a01)
 }
 const handleFrequencia = async (id) => {
   try {
-    console.log(id)
     const result = await api.get('mes/frequencia/' + id)
     frequencia = result.data
+    console.log(frequencia)
     handldeOptions(frequencia)
   } catch (error) {
-    console.log('Ocorreu um erro: ' + error)
+    console.log('Ocorreu um erro: frequencia: ' + error)
   }
 }
 
 let options = [
   {
-    label: 'frequencia[1].a01',
-    value: 'frequencia[1].a01'
+    label: 'frequencia[2].a01',
+    value: 'frequenci + '
   }
 ]
 
-// for (let i = 0; i < frequencia[1].length; i++) {
+// for (let i = 0; i < frequencia[2].length; i++) {
 //   options[i].label = `${i + 1}`
 // }
 

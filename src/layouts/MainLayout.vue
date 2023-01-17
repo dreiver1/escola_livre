@@ -51,6 +51,12 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
   {
+    title: 'Inicio',
+    caption: 'Sair do aplicativo',
+    icon: 'home',
+    link: 'me'
+  },
+  {
     title: 'Turmas',
     caption: 'Sair do aplicativo',
     icon: 'class',

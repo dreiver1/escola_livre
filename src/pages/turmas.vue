@@ -1,6 +1,8 @@
 <template>
   <q-page class="row-reverse justify-center">
-    <div class="text-h4 flex flex-center" style="padding: 10px;" >TURMAS</div>
+    <div style="display: flex; justify-content: space-between; padding: 10px;" >
+      <span class="text-h5">TURMAS: </span>
+      <q-btn label="Criar turma" color='blue' style="align-self: flex-end; margin-left: 10px;" :to="{ name: 'me' }"> </q-btn></div>
     <div>
       <listaTurmas
       v-for="turma in turmaslist"
@@ -21,7 +23,6 @@ const getTurmas = async () => {
   try {
     const response = await list()
     turmasLista.value = response
-    console.log(response)
   } catch (error) {
     console.log('ocorreu um erro: ' + error)
   }

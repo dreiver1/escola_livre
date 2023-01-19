@@ -72,7 +72,7 @@ const linksList = [
     title: 'Alunos',
     caption: 'Sair do aplicativo',
     icon: 'perm_identity',
-    link: 'me'
+    link: 'alunosPage'
   },
   {
     title: 'Calendario',

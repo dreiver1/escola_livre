@@ -19,7 +19,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: 'id/:Id', name: 'turmaPage', component: () => import('pages/turma.vue') },
-      { path: 'alunos', name: 'turmaAlunos', component: () => import('pages/turma/turmaAlunos.vue') },
+      { path: 'create', name: 'createTurma', component: () => import('pages/turma/createTurma.vue') },
       { path: 'frequencia', name: 'turmaFrequencia', component: () => import('pages/turma/turmaFrequencia.vue') }
     ],
     props: true

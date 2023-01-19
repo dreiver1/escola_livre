@@ -75,6 +75,12 @@ const linksList = [
     link: 'me'
   },
   {
+    title: 'Calendario',
+    caption: 'Sair do aplicativo',
+    icon: 'date_range',
+    link: 'me'
+  },
+  {
     title: 'Configurações',
     caption: 'Sair do aplicativo',
     icon: 'manage_accounts',

@@ -2,7 +2,7 @@
   <q-page class="row-reverse justify-center">
     <div style="display: flex; justify-content: space-between; padding: 10px;" >
       <span class="text-h5">TURMAS: </span>
-      <q-btn label="Criar turma" color='blue' style="align-self: flex-end; margin-left: 10px;" :to="{ name: 'me' }"> </q-btn></div>
+      <q-btn label="Criar turma" color='blue' style="align-self: flex-end; margin-left: 10px;" :to="{ name: 'createTurma' }"> </q-btn></div>
     <div>
       <listaTurmas
       v-for="turma in turmaslist"
@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import postsService from 'src/services/turmas'
+import turmaService from 'src/services/turmas'
 import { defineComponent, onMounted, ref } from 'vue'
 import listaTurmas from 'src/components/listaTurmas.vue'
-const { list } = postsService()
+const { list } = turmaService()
 const turmasLista = ref([])
 const getTurmas = async () => {
   try {

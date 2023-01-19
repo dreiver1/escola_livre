@@ -2,7 +2,7 @@
   <q-page class="row-reverse justify-center q-pa-md">
     <div class="row justify-between q-my-sm">
       <div class="text-h4">Alunos: </div>
-      <q-btn label="Cadastrar Aluno"></q-btn>
+      <q-btn label="Cadastrar Aluno" :to="{name: 'createAluno'}"></q-btn>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 ">
     <listaAlunosVue
@@ -18,7 +18,7 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import listaAlunosVue from 'src/components/listaAlunos.vue'
-import alunoService from '../services/alunos.js'
+import alunoService from '../../services/alunos.js'
 
 const { list } = alunoService()
 

@@ -11,15 +11,16 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: 'me', name: 'me', component: () => import('pages/IndexPage.vue') },
-      { path: 'turmas', name: 'turmasPage', component: () => import('pages/turmas.vue') },
-      { path: 'alunos', name: 'alunosPage', component: () => import('pages/alunosPage.vue') }
+      { path: 'turmas', name: 'turmasPage', component: () => import('pages/turm/turmas.vue') },
+      { path: 'alunos', name: 'alunosPage', component: () => import('pages/aluno/alunosPage.vue') },
+      { path: 'alunos/create', name: 'createAluno', component: () => import('pages/aluno/createAluno.vue') }
     ]
   },
   {
     path: '/turma/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: 'id/:Id', name: 'turmaPage', component: () => import('pages/turma.vue') },
+      { path: 'id/:Id', name: 'turmaPage', component: () => import('pages/turma/turma.vue') },
       { path: 'create', name: 'createTurma', component: () => import('pages/turma/createTurma.vue') },
       { path: 'frequencia', name: 'turmaFrequencia', component: () => import('pages/turma/turmaFrequencia.vue') }
     ],

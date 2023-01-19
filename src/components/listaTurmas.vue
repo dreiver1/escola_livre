@@ -9,6 +9,10 @@
       <q-item-label>Materia: {{ nome }}</q-item-label>
       <q-item-label>ID: {{ id }}</q-item-label>
     </q-item-section>
+    <q-iten-section>
+      <q-btn icon="edit" class="q-ma-sm" color="blue" dense ></q-btn>
+      <q-btn icon="delete" class="q-ma-sm" color="negative" dense ></q-btn>
+    </q-iten-section>
   </q-item>
 </template>
 <script>

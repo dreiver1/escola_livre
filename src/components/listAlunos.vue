@@ -5,7 +5,7 @@
         <q-item-section style="padding: 0px;">
           <q-form>
           <div class="flex flex-center" style="padding: 0px;">
-            <div class="text-h6" style="padding: 10px;"> Nome do aluno </div>
+            <div class="text-h6" style="padding: 10px;"> Aluno: {{ this.nome }} </div>
             <q-option-group
               v-model="group"
               :options="options"
@@ -34,136 +34,138 @@ const handldeOptions = (mes) => {
   const aux = [
     {
       label: '01',
-      value: mes[1].a02 + `${1}`
+      value: mes[0].a02 + `${1}`
     },
     {
       label: '02',
-      value: mes[1].a02 + `${2}`
+      value: mes[0].a02 + `${2}`
     },
     {
       label: '03',
-      value: mes[1].a03 + `${3}`
+      value: mes[0].a03 + `${3}`
     },
     {
       label: '04',
-      value: mes[1].a04 + `${4}`
+      value: mes[0].a04 + `${4}`
     },
     {
       label: '05',
-      value: mes[1].a05 + `${5}`
+      value: mes[0].a05 + `${5}`
     },
     {
       label: '06',
-      value: mes[1].a06 + `${6}`
+      value: mes[0].a06 + `${6}`
     },
     {
       label: '07',
-      value: mes[1].a07 + `${7}`
+      value: mes[0].a07 + `${7}`
     },
     {
       label: '08',
-      value: mes[1].a08 + `${8}`
+      value: mes[0].a08 + `${8}`
     },
     {
       label: '09',
-      value: mes[1].a09 + `${9}`
+      value: mes[0].a09 + `${9}`
     },
     {
       label: `${10}`,
-      value: mes[1].a10 + `${10}`
+      value: mes[0].a10 + `${10}`
     },
     {
       label: `${11}`,
-      value: mes[1].a11 + `${11}`
+      value: mes[0].a11 + `${11}`
     },
     {
       label: `${12}`,
-      value: mes[1].a12 + `${12}`
+      value: mes[0].a12 + `${12}`
     },
     {
       label: `${13}`,
-      value: mes[1].a13 + `${13}`
+      value: mes[0].a13 + `${13}`
     },
     {
       label: `${14}`,
-      value: mes[1].a14 + `${14}`
+      value: mes[0].a14 + `${14}`
     },
     {
       label: `${15}`,
-      value: mes[1].a15 + `${15}`
+      value: mes[0].a15 + `${15}`
     },
     {
       label: `${16}`,
-      value: mes[1].a16 + `${16}`
+      value: mes[0].a16 + `${16}`
     },
     {
       label: `${17}`,
-      value: mes[1].a17 + `${17}`
+      value: mes[0].a17 + `${17}`
     },
     {
       label: `${18}`,
-      value: mes[1].a18 + `${18}`
+      value: mes[0].a18 + `${18}`
     },
     {
       label: `${19}`,
-      value: mes[1].a19 + `${19}`
+      value: mes[0].a19 + `${19}`
     },
     {
       label: `${20}`,
-      value: mes[1].a20 + `${20}`
+      value: mes[0].a20 + `${20}`
     },
     {
       label: `${21}`,
-      value: mes[1].a21 + `${21}`
+      value: mes[0].a21 + `${21}`
     },
     {
       label: `${22}`,
-      value: mes[1].a22 + `${22}`
+      value: mes[0].a22 + `${22}`
     },
     {
       label: `${23}`,
-      value: mes[1].a23 + `${23}`
+      value: mes[0].a23 + `${23}`
     },
     {
       label: `${24}`,
-      value: mes[1].a24 + `${24}`
+      value: mes[0].a24 + `${24}`
     },
     {
       label: `${25}`,
-      value: mes[1].a25 + `${25}`
+      value: mes[0].a25 + `${25}`
     },
     {
       label: `${26}`,
-      value: mes[1].a26 + `${26}`
+      value: mes[0].a26 + `${26}`
     },
     {
       label: `${27}`,
-      value: mes[1].a27 + `${27}`
+      value: mes[0].a27 + `${27}`
     },
     {
       label: `${28}`,
-      value: mes[1].a28 + `${28}`
+      value: mes[0].a28 + `${28}`
     },
     {
       label: `${29}`,
-      value: mes[1].a29 + `${29}`
+      value: mes[0].a29 + `${29}`
     },
     {
       label: `${30}`,
-      value: mes[1].a30 + `${30}`
+      value: mes[0].a30 + `${30}`
     },
     {
       label: `${31}`,
-      value: mes[1].a31 + `${31}`
+      value: mes[0].a31 + `${31}`
     }
   ]
   options = aux
 }
+
 const handleFrequencia = async (id) => {
   try {
-    const result = await api.get('mes/frequencia/' + id)
+    const result = await api.get('frequencia/turma/' + id)
+    console.log(result)
     frequencia = result.data
-    console.log(frequencia)
+    console.log(frequencia + 'frequencia')
     handldeOptions(frequencia)
   } catch (error) {
     console.log('Ocorreu um erro: frequencia: ' + error)
@@ -184,14 +186,14 @@ let options = [
 export default defineComponent({
   name: 'listAlunos',
   props: {
-    alunosIdAluno: {
-      String
+    idAluno: {
+      type: String
     },
-    id: {
-      String
+    nome: {
+      type: String
     },
     turmaId: {
-      String
+      type: String
     }
   },
   setup () {
@@ -200,7 +202,7 @@ export default defineComponent({
     }
   },
   created () {
-    handleFrequencia(this.id)
+    handleFrequencia(this.turmaId)
     console.log(frequencia)
   },
   data () {

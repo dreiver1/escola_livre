@@ -4,10 +4,10 @@ export default function turmaService () {
   const { list, post, update, remove, getById } = useApi('turmas')
 
   return {
-    list,
-    post,
-    update,
-    remove,
-    getById
+    listTurma: list,
+    postTurma: post,
+    updateTurma: update,
+    removeTurma: remove,
+    getByIdTurma: getById
   }
 }

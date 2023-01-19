@@ -1,5 +1,5 @@
 <template>
-  <q-item clickable v-ripple @click="handleTurmas({ id })" style="padding: 10px; border: 1px solid black;">
+  <q-item clickable v-ripple @click="handleTurmas({ id })" style="padding: 10px; border: 1px solid black; ">
     <q-item-section  v-if="icon"
     avatar>
       <q-icon :name="icon" />
@@ -9,6 +9,10 @@
       <q-item-label>Turma: {{ turmaId }}</q-item-label>
       <q-item-label>email: {{ email }}</q-item-label>
     </q-item-section>
+    <q-iten-section>
+      <q-btn icon="edit" class="q-ma-sm" color="blue" dense ></q-btn>
+      <q-btn icon="delete" class="q-ma-sm" color="negative" dense ></q-btn>
+    </q-iten-section>
   </q-item>
 </template>
 <script>

@@ -17,14 +17,14 @@ import { defineComponent, ref } from 'vue'
 import profService from '../../services/prof.js'
 import turmaService from '../../services/turmas.js'
 
-const { list } = profService()
-const { post } = turmaService()
+const { listProf } = profService()
+const { postTurma } = turmaService()
 
 const professoresApi = []
 
 const handleProfessores = async () => {
   try {
-    const professores = await list()
+    const professores = await listProf()
     for (let i = 0; i < professores.length; i++) {
       const aux = {
         label: professores[i].nome,
@@ -54,7 +54,7 @@ export default defineComponent({
           professoresIdprofessores: model.value.value
         }
         console.log(body)
-        const turma = await post(body)
+        const turma = await postTurma(body)
         console.log(turma)
       } catch (error) {
         alert('ocorreu um erro: ' + error)

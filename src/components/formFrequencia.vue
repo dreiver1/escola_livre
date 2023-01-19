@@ -11,45 +11,24 @@
   </q-item>
 </template>
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { api } from 'src/boot/axios.js'
 import ListAlunos from './listAlunos.vue'
 // var alunos
 const handleFrequencia = async (idTurma) => {
   try {
-    const { data } = await api.get('http://localhost:3002/alunos/turma/' + idTurma)
-    console.log(data)
+    const request = 'http://localhost:3002/alunos/turma/' + idTurma
+    const { data } = await api.get(request)
+    studentsList.value = data
+    console.log(data + 'data')
+    console.log(studentsList)
   } catch (error) {
     console.log('ocorreu um erro: ' + error)
   }
 }
-const studentsList = [
-  {
-    alunosIdAluno: 'clc3gi38n0002uls05tirw9ap',
-    turmaId: 'clc3gi38n0002uls05tirw9ap',
-    id: 'clczb49210007ulzcp2abnrbv'
-  },
-  {
-    alunosIdAluno: 'clc3gi38n0002uls05tirw9ap',
-    turmaId: 'Sair do aplicativo',
-    id: 'clczb49210007ulzcp2abnrbv'
-  },
-  {
-    alunosIdAluno: 'clc3gi38n0002uls05tirw9ap',
-    turmaId: 'clc3ke2zc0001ul38kp8aczk5',
-    id: 'clczb49210007ulzcp2abnrbv'
-  },
-  {
-    alunosIdAluno: 'clc3gi38n0002uls05tirw9ap',
-    turmaId: 'Sair do aplicativo',
-    id: 'clczb49210007ulzcp2abnrbv'
-  },
-  {
-    alunosIdAluno: 'Logout',
-    turmaId: 'Sair do aplicativo',
-    id: 'clczb49210007ulzcp2abnrbv'
-  }
-]
+
+const studentsList = ref([])
+
 export default defineComponent({
   name: 'formFrequencia',
   props: {

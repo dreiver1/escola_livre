@@ -4,10 +4,10 @@ export default function profService () {
   const { list, post, update, remove, getById } = useApi('prof')
 
   return {
-    list,
-    post,
-    update,
-    remove,
-    getById
+    listProf: list,
+    postProf: post,
+    updateProf: update,
+    removeProf: remove,
+    getByIProf: getById
   }
 }

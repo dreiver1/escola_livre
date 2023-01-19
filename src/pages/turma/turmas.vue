@@ -8,7 +8,7 @@
       v-for="turma in turmaslist"
       :key="turma.id"
       v-bind="turma"
-      style="padding: 10px; border: 1px solid black; border-radius: 10px; margin: 5px;"/>
+      style="padding: 10px; border: 2px solid grey; border-radius: 10px; margin: 5px;"/>
     </div>
   </q-page>
 </template>
@@ -17,11 +17,11 @@
 import turmaService from 'src/services/turmas'
 import { defineComponent, onMounted, ref } from 'vue'
 import listaTurmas from 'src/components/listaTurmas.vue'
-const { list } = turmaService()
+const { listTurma } = turmaService()
 const turmasLista = ref([])
 const getTurmas = async () => {
   try {
-    const response = await list()
+    const response = await listTurma()
     turmasLista.value = response
   } catch (error) {
     console.log('ocorreu um erro: ' + error)

@@ -1,12 +1,11 @@
-import { ref } from 'vue'
 import { api } from 'src/boot/axios'
-const user = ref(null)
+import Cookies from 'js-cookie'
 
 export default function useAuthAdmin () {
   const login = async (data) => {
-    const { token, message } = await api.post('/admin/login', data)
-    if (message) { alert(message) }
-    return token
+    const result = await api.post('/admin/login', data)
+    if (result.message) { alert(result.message) }
+    return result.data.token
   }
   const loginWithSocialProvider = async (provider) => {
 
@@ -16,8 +15,15 @@ export default function useAuthAdmin () {
 
   }
 
-  const isLogedIn = () => {
-    return !!user.value
+  const isLoggedIn = async () => {
+    try {
+      const token = Cookies.get('_myAppToken')
+      const pass = await api.post('services/auth', token)
+      console.log(pass)
+      return true
+    } catch (error) {
+      return false
+    }
   }
 
   const register = async ({ email, password, ...meta }) => {
@@ -35,7 +41,7 @@ export default function useAuthAdmin () {
   return {
     login,
     loginWithSocialProvider,
-    isLogedIn,
+    isLoggedIn,
     logout,
     register,
     update,

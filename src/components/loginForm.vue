@@ -30,21 +30,20 @@
 import useAuthAdmin from 'src/composables/useAuth'
 import { defineComponent, ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import Cookies from 'js-cookie'
 
 export default defineComponent({
   name: 'loginForm',
   setup () {
     const router = useRouter()
-    const { login } = useAuthAdmin()
+    const { login, isLoggedIn } = useAuthAdmin()
     const form = ref({
       email: '',
       senha: ''
     })
 
-    const isLoggedIn = false
-
     onMounted(() => {
-      if (isLoggedIn) {
+      if (isLoggedIn()) {
         router.push({ name: 'me' })
       }
     })
@@ -52,10 +51,11 @@ export default defineComponent({
     const handleLogin = async () => {
       try {
         const token = await login(form.value)
-        router.push({ name: 'me' })
         console.log(token)
+        Cookies.set('_myAppToken', token)
+        router.push({ name: 'me' })
       } catch (error) {
-        console.log(error.message)
+        return alert('Usuario não encontrado')
       }
     }
 

@@ -4,8 +4,11 @@ import Cookies from 'js-cookie'
 export default function useAuthAdmin () {
   const login = async (data) => {
     const result = await api.post('/admin/login', data)
-    if (result.message) { alert(result.message) }
-    return result.data.token
+    if (result.data.token) {
+      return result.data.token
+    } else {
+      return 'não autorizado'
+    }
   }
   const loginWithSocialProvider = async (provider) => {
 
@@ -17,9 +20,15 @@ export default function useAuthAdmin () {
 
   const isLoggedIn = async () => {
     try {
-      const token = Cookies.get('_myAppToken')
-      const pass = await api.post('services/auth', token)
-      console.log(pass)
+      const tokenGet = Cookies.get('_myAppToken')
+      const req = {
+        token: tokenGet
+      }
+      const pass = await api.post('services/auth', req)
+      if (pass.data.message === 'Token invalido') {
+        Cookies.remove('_myAppToken')
+        return false
+      }
       return true
     } catch (error) {
       return false

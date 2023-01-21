@@ -42,9 +42,11 @@ export default defineComponent({
       senha: ''
     })
 
-    onMounted(() => {
-      if (isLoggedIn()) {
+    onMounted(async () => {
+      const loged = await isLoggedIn()
+      if (loged === true) {
         router.push({ name: 'me' })
+        console.log('passou')
       }
     })
 
@@ -55,7 +57,8 @@ export default defineComponent({
         Cookies.set('_myAppToken', token)
         router.push({ name: 'me' })
       } catch (error) {
-        return alert('Usuario não encontrado')
+        console.log(error)
+        return alert('Usuario não encontrado' + error)
       }
     }
 

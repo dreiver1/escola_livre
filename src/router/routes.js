@@ -15,7 +15,10 @@ const routes = [
       { path: 'turmas', name: 'turmasPage', component: () => import('pages/turma/turmas.vue') },
       { path: 'alunos', name: 'alunosPage', component: () => import('pages/aluno/alunosPage.vue') },
       { path: 'alunos/create', name: 'createAluno', component: () => import('pages/aluno/createAluno.vue') }
-    ]
+    ],
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/turma/',
@@ -25,7 +28,10 @@ const routes = [
       { path: 'create', name: 'createTurma', component: () => import('pages/turma/createTurma.vue') },
       { path: 'frequencia', name: 'turmaFrequencia', component: () => import('pages/turma/turmaFrequencia.vue') }
     ],
-    props: true
+    props: true,
+    meta: {
+      requiresAuth: true
+    }
   },
 
   // Always leave this as last one,

@@ -26,6 +26,7 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import { api } from 'src/boot/axios'
+import { updateMes } from 'src/services/mes'
 
 let frequencia = []
 
@@ -206,7 +207,16 @@ export default defineComponent({
     console.log(frequencia)
   },
   data () {
+    const updateFrequencia = async (id) => {
+      try {
+        const mes = await updateMes(id, options)
+        console.log(mes)
+      } catch (error) {
+        console.log(error)
+      }
+    }
     return {
+      updateFrequencia,
       options
     }
   }

@@ -23,6 +23,8 @@ import { defineComponent, ref } from 'vue'
 import alunoService from '../../services/alunos.js'
 import turmaService from '../../services/turmas.js'
 import profService from '../../services/prof.js'
+import freqService from 'src/services/frequencia'
+import mesService from 'src/services/mes'
 import { useRouter } from 'vue-router'
 
 const { postAluno } = alunoService()
@@ -70,6 +72,8 @@ export default defineComponent({
 
   },
   setup () {
+    const { postFreq } = freqService()
+    const { postMes } = mesService()
     const router = useRouter()
     const profModel = ref(null)
     const turmaModel = ref(null)
@@ -82,6 +86,33 @@ export default defineComponent({
     const confirmation = ref('')
     const turmas = listaTurmas
     const professores = listaProfs
+    const handleMes = async (frequencia) => {
+      try {
+        const datas = ['janeiro', 'fevereiro', 'marco', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
+        for (let i = 0; i < datas.length; i++) {
+          const body = {
+            nome: datas[i],
+            frequenciaId: frequencia.id
+          }
+          await postMes(body)
+        }
+      } catch (error) {
+        console.log('ocorreu um erro: ' + error)
+      }
+    }
+    const handleFrequencia = async (idAluno) => {
+      try {
+        const body = {
+          turmaId: turmaModel.value.value,
+          alunosIdAluno: idAluno
+        }
+        const frequencia = await postFreq(body)
+        console.log(frequencia)
+        handleMes(frequencia)
+      } catch (error) {
+        console.log('Ocorreu um erro: ' + error)
+      }
+    }
     const handleAluno = async () => {
       try {
         const body = {
@@ -95,8 +126,8 @@ export default defineComponent({
           turmaId: turmaModel.value.value
         }
         const aluno = await postAluno(body)
-        console.log(aluno)
-        router.push({ name: 'alunosPage' })
+        handleFrequencia(aluno.idAluno)
+        // router.push({ name: 'alunosPage' })
       } catch (error) {
         console.log('ocorreu um erro: ' + error)
       }

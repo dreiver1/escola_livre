@@ -1,6 +1,5 @@
 import { boot } from 'quasar/wrappers'
 import axios from 'axios'
-import Cookies from 'js-cookie'
 
 // Be careful when using SSR for cross-request state pollution
 // due to creating a Singleton instance here;
@@ -9,19 +8,17 @@ import Cookies from 'js-cookie'
 // "export default () => {}" function below (which runs individually
 // for each client)
 
-const token = Cookies.get('_myAppToken')
-
 const api = axios.create({ baseURL: 'http://localhost:3002/' })
 
-api.interceptors.request.use(
-  config => {
-    config.headers.authorization = `Bearer ${token}`
-    return config
-  },
-  error => {
-    return Promise.reject(error)
-  }
-)
+// api.interceptors.request.use(
+//   config => {
+//     config.headers.authorization = `Bearer ${token}`
+//     return config
+//   },
+//   error => {
+//     return Promise.reject(error)
+//   }
+// )
 
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api

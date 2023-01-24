@@ -1,9 +1,16 @@
 import { api } from 'boot/axios'
+import Cookies from 'js-cookie'
 
 export default function useApi (url) {
   const list = async () => {
     try {
-      const { data } = await api.get(url)
+      const token = await Cookies.get('_myAppToken')
+      console.log(token)
+      const { data } = await api.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       return data
     } catch (error) {
       throw new Error(error)
@@ -12,7 +19,12 @@ export default function useApi (url) {
 
   const getById = async (id) => {
     try {
-      const { data } = await api.get(`${url}/${id}`)
+      const token = await Cookies.get('_myAppToken')
+      const { data } = await api.get(`${url}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       return data
     } catch (error) {
       throw new Error(error)
@@ -21,7 +33,12 @@ export default function useApi (url) {
 
   const post = async (form) => {
     try {
-      const { data } = await api.post(url, form)
+      const token = await Cookies.get('_myAppToken')
+      const { data } = await api.post(url, form, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       return data
     } catch (error) {
       throw new Error(error)
@@ -30,7 +47,12 @@ export default function useApi (url) {
 
   const update = async (form) => {
     try {
-      const { data } = await api.put(`${url}/${form.id}`, form)
+      const token = await Cookies.get('_myAppToken')
+      const { data } = await api.put(`${url}/${form.id}`, form, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       return data
     } catch (error) {
       throw new Error(error)
@@ -39,7 +61,12 @@ export default function useApi (url) {
 
   const remove = async (id) => {
     try {
-      const { data } = await api.delete(`${url}/${id}`)
+      const token = await Cookies.get('_myAppToken')
+      const { data } = await api.delete(`${url}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       return data
     } catch (error) {
       throw new Error(error)

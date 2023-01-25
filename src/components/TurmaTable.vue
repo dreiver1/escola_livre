@@ -12,24 +12,15 @@
     </div>
   </template>
 <script>
-import { defineComponent, ref } from 'vue'
-import { api } from 'src/boot/axios'
+import { defineComponent, ref, onMounted } from 'vue'
+import alunoService from '../services/alunos'
+let id = ''
+const aluno = alunoService()
 const columns = [
   { name: 'nome', field: 'nome', label: 'Nome', sortable: true },
   { name: 'idAluno', field: 'idAluno', label: 'Id', sortable: false },
   { name: 'email', field: 'email', label: 'Email', sortable: true }
 ]
-const alunos = ref([])
-const getAlunos = async (id) => {
-  try {
-    const request = 'http://localhost:3002/alunos/turma/' + id
-    const { data } = await api.get(request)
-    alunos.value = data
-    return console.log(data)
-  } catch (error) {
-    console.log('ocorreu um erro: ' + error)
-  }
-}
 export default defineComponent({
   name: 'TurmaTable',
   props: {
@@ -38,6 +29,13 @@ export default defineComponent({
     }
   },
   setup () {
+    const alunos = ref([])
+    onMounted(async () => {
+      console.log(id)
+      const data = await aluno.getByTurma(id)
+      alunos.value = data
+    }
+    )
     return {
       columns,
       alunos
@@ -49,8 +47,7 @@ export default defineComponent({
     }
   },
   created () {
-    console.log(this.idTurma)
-    getAlunos(this.idTurma)
+    id = this.idTurma
   }
 })
 </script>

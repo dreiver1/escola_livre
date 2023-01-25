@@ -5,7 +5,7 @@
       <q-icon :name="icon" />
     </q-item-section>
     <q-item-section>
-      <q-item-label>Nome: {{ nome }}</q-item-label>
+      <q-item-label>Nome: {{ this.nome }}</q-item-label>
       <q-item-label>Materia: {{ nome }}</q-item-label>
       <q-item-label>ID: {{ id }}</q-item-label>
     </q-item-section>
@@ -44,9 +44,9 @@ export default defineComponent({
   },
   setup () {
     const router = useRouter()
-    const handleTurmas = (id) => {
+    const handleTurmas = async (id) => {
       try {
-        router.push({ name: 'turmaPage', params: { Id: id.id } })
+        await router.push({ name: 'turmaPage', params: { Id: id.id } })
       } catch (error) {
         console.log('ocorreu um erro :' + error)
       }

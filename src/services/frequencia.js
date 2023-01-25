@@ -1,10 +1,17 @@
 import useApi from 'src/composables/UseApi'
 import { api } from 'src/boot/axios'
+import Cookies from 'js-cookie'
+
 export default function freqService () {
   const { list, post, update, remove } = useApi('frequencia')
-  const getFreqByTurma = async (id) => {
+  const getFreqByAluno = async (id) => {
+    const token = await Cookies.get('_myAppToken')
     try {
-      const frequencia = await api.get('frequencia/turma/' + id)
+      const frequencia = await api.get('frequencia/aluno/' + id, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       return frequencia.data
     } catch (error) {
       console.log('ocorreu um erro: ' + error)
@@ -15,6 +22,6 @@ export default function freqService () {
     postFreq: post,
     updateFreq: update,
     removeFreq: remove,
-    getFreqByTurma
+    getFreqByAluno
   }
 }

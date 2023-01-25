@@ -18,7 +18,7 @@
           <TurmaTable :idTurma="this.$route.params.Id"/>
         </q-tab-panel>
         <q-tab-panel name="frequency" style="padding: 0px;">
-          <frequencia :idTurma="this.$route.params.Id"/>
+          <frequenciaTab :idTurma="this.$route.params.Id"/>
         </q-tab-panel>
         <q-tab-panel name="grades" >
           <div class="text-h2 flex flex-center">Notas</div>
@@ -28,13 +28,13 @@
   </template>
 <script>
 import TurmaTable from 'src/components/TurmaTable.vue'
-import frequencia from 'src/components/frequenciaList.vue'
+import frequenciaTab from 'src/components/frequenciaTab.vue'
 import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'turmaPage',
   components: {
     TurmaTable,
-    frequencia
+    frequenciaTab
   },
   setup () {
     return {

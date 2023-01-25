@@ -14,14 +14,14 @@
 </template>
 
 <script>
-import turmaService from 'src/services/turmas'
+import turmaService from '../../services/turmas'
 import { defineComponent, onMounted, ref } from 'vue'
-import listaTurmas from 'src/components/listaTurmas.vue'
-const { listTurma } = turmaService()
+import listaTurmas from '../../components/listaTurmas.vue'
+const turma = turmaService()
 const turmasLista = ref([])
 const getTurmas = async () => {
   try {
-    const response = await listTurma()
+    const response = await turma.listTurma()
     turmasLista.value = response
   } catch (error) {
     console.log('ocorreu um erro: ' + error)

@@ -12,13 +12,13 @@
     </q-tabs>
     <q-tab-panels v-model="tab">
       <q-tab-panel name="janeiro" >
-        <formFrequencia :idTurma="idTurma"/>
+        <formFrequencia :idTurma="idTurma" :idMes="0"/>
       </q-tab-panel>
       <q-tab-panel name="fevereiro" >
-        <formFrequencia :idTurma="idTurma"/>
+        <formFrequencia :idTurma="idTurma" :idMes="1"/>
       </q-tab-panel>
       <q-tab-panel name="marco" >
-        <formFrequencia :idTurma="idTurma"/>
+        <formFrequencia :idTurma="idTurma" :idMes="2"/>
       </q-tab-panel>
     </q-tab-panels>
 </template>
@@ -27,7 +27,7 @@ import { defineComponent, ref } from 'vue'
 import formFrequencia from './formFrequencia.vue'
 
 export default defineComponent({
-  name: 'frequenciaList',
+  name: 'frequenciaTab',
   components: {
     formFrequencia
   },

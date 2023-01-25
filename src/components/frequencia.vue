@@ -25,164 +25,156 @@
 </template>
 <script>
 import { defineComponent, ref } from 'vue'
-import { api } from 'src/boot/axios'
-import { updateMes } from 'src/services/mes'
+import mesService from '../services/mes'
+import freqService from '../services/frequencia'
 
-let frequencia = []
+// const frequencia = []
 
-const handldeOptions = (mes) => {
-  console.log(mes)
+const mes = mesService()
+const freq = freqService()
+
+const handldeOptions = async (idFreq, idMes) => {
+  const Allmes = await mes.getByIdMes(idFreq)
+  const freq = Allmes[idMes.idMes]
   const aux = [
     {
       label: '01',
-      value: mes[0].a02 + `${1}`
+      value: freq.a01 + `${1}`
     },
     {
       label: '02',
-      value: mes[0].a02 + `${2}`
+      value: freq.a02 + `${2}`
     },
     {
       label: '03',
-      value: mes[0].a03 + `${3}`
+      value: freq.a03 + `${3}`
     },
     {
       label: '04',
-      value: mes[0].a04 + `${4}`
+      value: freq.a04 + `${4}`
     },
     {
       label: '05',
-      value: mes[0].a05 + `${5}`
+      value: freq.a05 + `${5}`
     },
     {
       label: '06',
-      value: mes[0].a06 + `${6}`
+      value: freq.a06 + `${6}`
     },
     {
       label: '07',
-      value: mes[0].a07 + `${7}`
+      value: freq.a07 + `${7}`
     },
     {
       label: '08',
-      value: mes[0].a08 + `${8}`
+      value: freq.a08 + `${8}`
     },
     {
       label: '09',
-      value: mes[0].a09 + `${9}`
+      value: freq.a09 + `${9}`
     },
     {
       label: `${10}`,
-      value: mes[0].a10 + `${10}`
+      value: freq.a10 + `${10}`
     },
     {
       label: `${11}`,
-      value: mes[0].a11 + `${11}`
+      value: freq.a11 + `${11}`
     },
     {
       label: `${12}`,
-      value: mes[0].a12 + `${12}`
+      value: freq.a12 + `${12}`
     },
     {
       label: `${13}`,
-      value: mes[0].a13 + `${13}`
+      value: freq.a13 + `${13}`
     },
     {
       label: `${14}`,
-      value: mes[0].a14 + `${14}`
+      value: freq.a14 + `${14}`
     },
     {
       label: `${15}`,
-      value: mes[0].a15 + `${15}`
+      value: freq.a15 + `${15}`
     },
     {
       label: `${16}`,
-      value: mes[0].a16 + `${16}`
+      value: freq.a16 + `${16}`
     },
     {
       label: `${17}`,
-      value: mes[0].a17 + `${17}`
+      value: freq.a17 + `${17}`
     },
     {
       label: `${18}`,
-      value: mes[0].a18 + `${18}`
+      value: freq.a18 + `${18}`
     },
     {
       label: `${19}`,
-      value: mes[0].a19 + `${19}`
+      value: freq.a19 + `${19}`
     },
     {
       label: `${20}`,
-      value: mes[0].a20 + `${20}`
+      value: freq.a20 + `${20}`
     },
     {
       label: `${21}`,
-      value: mes[0].a21 + `${21}`
+      value: freq.a21 + `${21}`
     },
     {
       label: `${22}`,
-      value: mes[0].a22 + `${22}`
+      value: freq.a22 + `${22}`
     },
     {
       label: `${23}`,
-      value: mes[0].a23 + `${23}`
+      value: freq.a23 + `${23}`
     },
     {
       label: `${24}`,
-      value: mes[0].a24 + `${24}`
+      value: freq.a24 + `${24}`
     },
     {
       label: `${25}`,
-      value: mes[0].a25 + `${25}`
+      value: freq.a25 + `${25}`
     },
     {
       label: `${26}`,
-      value: mes[0].a26 + `${26}`
+      value: freq.a26 + `${26}`
     },
     {
       label: `${27}`,
-      value: mes[0].a27 + `${27}`
+      value: freq.a27 + `${27}`
     },
     {
       label: `${28}`,
-      value: mes[0].a28 + `${28}`
+      value: freq.a28 + `${28}`
     },
     {
       label: `${29}`,
-      value: mes[0].a29 + `${29}`
+      value: freq.a29 + `${29}`
     },
     {
       label: `${30}`,
-      value: mes[0].a30 + `${30}`
+      value: freq.a30 + `${30}`
     },
     {
       label: `${31}`,
-      value: mes[0].a31 + `${31}`
+      value: freq.a31 + `${31}`
     }
   ]
-  options = aux
+  options.value = aux
 }
 
-const handleFrequencia = async (id) => {
+const handleFrequencia = async (id, mes) => {
   try {
-    const result = await api.get('frequencia/turma/' + id)
-    console.log(result)
-    frequencia = result.data
-    console.log(frequencia + 'frequencia')
-    handldeOptions(frequencia)
+    const result = await freq.getFreqByAluno(id)
+    handldeOptions(result.id, mes)
   } catch (error) {
     console.log('Ocorreu um erro: frequencia: ' + error)
   }
 }
 
-let options = [
-  {
-    label: 'frequencia[2].a01',
-    value: 'frequenci + '
-  }
-]
-
-// for (let i = 0; i < frequencia[2].length; i++) {
-//   options[i].label = `${i + 1}`
-// }
+const options = ref([])
 
 export default defineComponent({
   name: 'listAlunos',
@@ -195,6 +187,10 @@ export default defineComponent({
     },
     turmaId: {
       type: String
+    },
+    idMes: {
+      type: Number,
+      required: true
     }
   },
   setup () {
@@ -203,14 +199,13 @@ export default defineComponent({
     }
   },
   created () {
-    handleFrequencia(this.turmaId)
-    console.log(frequencia)
+    handleFrequencia(this.idAluno, this.idMes)
   },
   data () {
     const updateFrequencia = async (id) => {
       try {
-        const mes = await updateMes(id, options)
-        console.log(mes)
+        const res = await mes.upMes(id, options)
+        console.log(res)
       } catch (error) {
         console.log(error)
       }

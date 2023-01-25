@@ -5,7 +5,6 @@ export default function useApi (url) {
   const list = async () => {
     try {
       const token = await Cookies.get('_myAppToken')
-      console.log(token)
       const { data } = await api.get(url, {
         headers: {
           Authorization: `Bearer ${token}`

@@ -1,49 +1,57 @@
 <template>
   <q-item>
     <div class="q-pa-md" >
-      <ListAlunos
+      <Frequencia
         v-for="aluno in AlunosList"
-        :key="aluno.alunosIdAluno"
+        :key="aluno.idAluno"
         v-bind="aluno"
         style="padding: 0px;"
+        :idMes="{idMes}"
       />
     </div>
   </q-item>
 </template>
 <script>
-import { defineComponent, ref } from 'vue'
-import { api } from 'src/boot/axios.js'
-import ListAlunos from './listAlunos.vue'
-// var alunos
-const handleFrequencia = async (idTurma) => {
-  try {
-    const request = 'http://localhost:3002/alunos/turma/' + idTurma
-    const { data } = await api.get(request)
-    studentsList.value = data
-    console.log(data + 'data')
-    console.log(studentsList)
-  } catch (error) {
-    console.log('ocorreu um erro: ' + error)
-  }
-}
+import { defineComponent, ref, onMounted } from 'vue'
+import alunoService from 'src/services/alunos'
+import Frequencia from './frequencia.vue'
 
-const studentsList = ref([])
+let id = ''
 
 export default defineComponent({
   name: 'formFrequencia',
   props: {
+    idMes: {
+      type: Number,
+      required: true
+    },
     idTurma: {
       type: String
     }
   },
   created () {
-    handleFrequencia(this.idTurma)
+    id = this.idTurma
   },
   setup () {
+    const aluno = alunoService()
+    const handleFrequencia = async (idTurma) => {
+      try {
+        const data = await aluno.getByTurma(idTurma)
+        console.log(data, 'turmas')
+        studentsList.value = data
+      } catch (error) {
+        console.log('ocorreu um erro: ' + error)
+      }
+    }
+    const studentsList = ref([])
+    onMounted(async () => {
+      await handleFrequencia(id)
+    })
+
     return {
       AlunosList: studentsList
     }
   },
-  components: { ListAlunos }
+  components: { Frequencia }
 })
 </script>

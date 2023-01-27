@@ -43,7 +43,7 @@
 </template>
 <script>
 
-import { defineComponent, ref, onMounted } from 'vue'
+import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
 import mesService from '../services/mes'
 import freqService from '../services/frequencia'
 // import frequenciaCheckBox from './frequenciaCheckBox.vue'
@@ -90,6 +90,7 @@ export default defineComponent({
       const data = aux[idMes.idMes]
       console.log(data[1].dia)
       const mesAtual = {
+        id: data[0].id,
         d01: data[1].dia,
         d02: data[2].dia,
         d03: data[3].dia,
@@ -128,9 +129,46 @@ export default defineComponent({
       console.log(id, mesID)
       await handleDias(id, mesID)
     })
-    const updateValue = () => {
-      console.log('chamou')
+    const updateValue = async () => {
+      const form = {
+        id: dias.value.id,
+        a01: dias.value.d01,
+        a02: dias.value.d02,
+        a03: dias.value.d03,
+        a04: dias.value.d04,
+        a05: dias.value.d05,
+        a06: dias.value.d06,
+        a07: dias.value.d07,
+        a08: dias.value.d08,
+        a09: dias.value.d09,
+        a10: dias.value.d10,
+        a11: dias.value.d11,
+        a12: dias.value.d12,
+        a13: dias.value.d13,
+        a14: dias.value.d14,
+        a15: dias.value.d15,
+        a16: dias.value.d16,
+        a17: dias.value.d17,
+        a19: dias.value.d19,
+        a20: dias.value.d20,
+        a21: dias.value.d21,
+        a22: dias.value.d22,
+        a23: dias.value.d23,
+        a24: dias.value.d24,
+        a25: dias.value.d25,
+        a26: dias.value.d26,
+        a27: dias.value.d27,
+        a28: dias.value.d28,
+        a29: dias.value.d29,
+        a30: dias.value.d30,
+        a31: dias.value.d31
+      }
+      const newMes = await mes.upMes(form)
+      console.log(newMes)
     }
+    onUnmounted(async () => {
+      await updateValue()
+    })
     return {
       updateValue,
       dias

@@ -1,4 +1,4 @@
-import useApi from 'src/composables/UseApi'
+import useApi from 'src/composables/useApi'
 import Cookies from 'js-cookie'
 import { api } from 'boot/axios'
 

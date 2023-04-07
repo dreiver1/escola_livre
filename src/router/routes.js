@@ -25,8 +25,8 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: 'id/:Id', name: 'turmaPage', component: () => import('pages/turma/turma.vue') },
-      { path: 'create', name: 'createTurma', component: () => import('pages/turma/createTurma.vue') },
-      { path: 'frequencia', name: 'turmaFrequencia', component: () => import('pages/turma/turmaFrequencia.vue') }
+      { path: 'create', name: 'createTurma', component: () => import('pages/turma/createTurma.vue') }
+      // { path: 'frequencia', name: 'turmaFrequencia', component: () => import('pages/turma/turmaFrequencia.vue') }
     ],
     props: true,
     meta: {

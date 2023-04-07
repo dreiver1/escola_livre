@@ -10,7 +10,7 @@ export default function useAuthAdmin () {
       return 'não autorizado'
     }
   }
-  const loginWithSocialProvider = async (provider) => {
+  const loginWithSocialProvider = async () => {
 
   }
 
@@ -35,11 +35,11 @@ export default function useAuthAdmin () {
     }
   }
 
-  const register = async ({ email, password, ...meta }) => {
+  const register = async () => {
 
   }
 
-  const update = async (data) => {
+  const update = async () => {
 
   }
 

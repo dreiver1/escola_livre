@@ -1,5 +1,11 @@
+// import * as dotenv from 'dotenv'
+// dotenv.config()
+
 import { boot } from 'quasar/wrappers'
 import axios from 'axios'
+
+// eslint-disable-next-line no-undef
+// const baseURL = process.env.SERVER
 
 // Be careful when using SSR for cross-request state pollution
 // due to creating a Singleton instance here;
@@ -8,7 +14,7 @@ import axios from 'axios'
 // "export default () => {}" function below (which runs individually
 // for each client)
 
-const api = axios.create({ baseURL: 'http://localhost:3002/' })
+const api = axios.create({ baseURL: 'https://schoolmanegementsystem.up.railway.app'})
 
 // api.interceptors.request.use(
 //   config => {

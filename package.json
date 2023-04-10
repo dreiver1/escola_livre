@@ -13,6 +13,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
+    "dotenv": "^16.0.3",
     "js-cookie": "^3.0.1",
     "pinia": "^2.0.29",
     "quasar": "^2.6.0",
